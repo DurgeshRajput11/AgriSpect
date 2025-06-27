@@ -1,0 +1,73 @@
+# 🌾 AgriVision: AI-Powered Crop Analysis
+
+AgriVision is an interactive web app for smart crop and fruit detection using YOLOv8. Upload images, videos, or use your webcam to identify and count fruits and crops with a beautiful, modern UI.
+
+## 🚀 Features
+
+- **Model selection:** Choose from system-trained, YOLOv8 variants, or upload your own model.
+- **Flexible input:** Supports images, videos, and live webcam.
+- **Customizable detection:** Adjust confidence and IoU thresholds.
+- **Modern UI:** Dark mode, accent colors, and responsive design.
+- **Download results:** Save processed images/videos with detections.
+
+## 🖼️ Preview
+
+| ![Classic Dark Sidebar](https://via.placeholder.com/300x200/2c2f3a/f4f4f4?text=Dark+Sidebar) | ![Modern Card Sidebar](https://via.placeholder.com/300x200/23243a/f4f4f4?text=Card+Sidebar) |
+|:---:|:---:|
+| Classic Dark Sidebar | Modern Card Sidebar |
+
+**Replace the placeholder images with your own screenshots!**
+
+## 🛠️ Installation
+
+1. **Clone the repository:**
+
+    ```
+    git clone https://github.com/your-username/agrivision-app.git
+    cd agrivision-app
+    ```
+
+2. **Install dependencies:**
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+3. **(Optional) Set up your own YOLOv8 model:**
+
+    - Place your `.pt` file in the `weights/` folder.
+
+## ▶️ Usage
+
+
+- Open your browser at the displayed local URL.
+- Use the sidebar to configure the model, detection parameters, and input type.
+
+## 💡 Customization
+
+- **Change theme/colors:** Edit the CSS in `app.py` for different sidebar or main area looks.
+- **Add new models:** Place new YOLOv8 `.pt` files in the `weights/` directory.
+
+## 📁 Project Structure
+
+agrivision-app/
+│
+├── app.py
+├── requirements.txt
+├── weights/
+│ └── best.pt
+├── temp/ # Temporary files (auto-generated, not in repo)
+├── .gitignore
+└── README.md
+
+
+## ->
+ Acknowledgements
+
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
+- [Streamlit](https://streamlit.io/)
+- [OpenCV](https://opencv.org/)
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).

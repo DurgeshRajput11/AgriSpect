@@ -1,0 +1,107 @@
+
+.stApp {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #3e7e2f; 
+    font-weight: 600;
+}
+.css-1e5imcs {
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 2rem 1rem;
+}
+
+.stSidebar .stButton button {
+    background-color: #3e7e2f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.stSidebar .stButton button:hover {
+    background-color: #2e6e1f;
+}
+
+.stFileUploader {
+    border: 2px dashed #3e7e2f;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #f0f8f0;
+    margin-bottom: 1rem;
+}
+.stFileUploader label {
+    color: #3e7e2f;
+    font-weight: 500;
+}
+
+.stButton button {
+    background-color: #3e7e2f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.stButton button:hover {
+    background-color: #2e6e1f;
+}
+
+.stExpander {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stExpander summary {
+    font-weight: 600;
+    color: #3e7e2f;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.stProgress > div > div {
+    background-color: #3e7e2f !important;
+}
+.toast {
+    background-color: #3e7e2f;
+    color: white;
+}
+.stAlert {
+    background-color: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    color: #2e7d32;
+}
+.stAlert-error {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #c62828;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 1.5rem 0;
+}
+
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stColumn {
+    padding: 0.5rem;
+}
