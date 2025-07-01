@@ -1,5 +1,6 @@
 # 🌾 AgriVision: AI-Powered Crop Analysis
 #live demo : https://crop-vision.streamlit.app/
+
 AgriVision is an interactive web app for smart crop and fruit detection using YOLOv8. Upload images, videos, or use your webcam to identify and count fruits and crops with a beautiful, modern UI.
 
 ## 🚀 Features
