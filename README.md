@@ -11,13 +11,7 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 - **Modern UI:** Dark mode, accent colors, and responsive design.
 - **Download results:** Save processed images/videos with detections.
 
-## 🖼️ Preview
 
-| ![Classic Dark Sidebar](https://via.placeholder.com/300x200/2c2f3a/f4f4f4?text=Dark+Sidebar) | ![Modern Card Sidebar](https://via.placeholder.com/300x200/23243a/f4f4f4?text=Card+Sidebar) |
-|:---:|:---:|
-| Classic Dark Sidebar | Modern Card Sidebar |
-
-**Replace the placeholder images with your own screenshots!**
 
 ## 🛠️ Installation
 
@@ -49,6 +43,7 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 - **Change theme/colors:** Edit the CSS in `app.py` for different sidebar or main area looks.
 - **Add new models:** Place new YOLOv8 `.pt` files in the `weights/` directory.
 
+
 ## 📁 Project Structure
 
 agrivision-app/
@@ -60,6 +55,7 @@ agrivision-app/
 ├── temp/ # Temporary files (auto-generated, not in repo)
 ├── .gitignore
 └── README.md
+
 
 
 ## ->
