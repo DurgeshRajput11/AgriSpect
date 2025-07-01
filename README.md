@@ -1,5 +1,5 @@
 # 🌾 AgriVision: AI-Powered Crop Analysis
-live WebApp : https://crop-vision.streamlit.app/
+Live WebApp : https://crop-vision.streamlit.app/
 
 AgriVision is an interactive web app for smart crop and fruit detection using YOLOv8. Upload images, videos, or use your webcam to identify and count fruits and crops with a beautiful, modern UI.
 
@@ -44,17 +44,25 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 - **Add new models:** Place new YOLOv8 `.pt` files in the `weights/` directory.
 
 
+
+
+
 ## 📁 Project Structure
 
-agrivision-app/
+
+
+
+agrivision-app/   
 │
-├── app.py
-├── requirements.txt
-├── weights/
-│ └── best.pt
-├── temp/ # Temporary files (auto-generated, not in repo)
-├── .gitignore
-└── README.md
+├── app.py     
+├── requirements.txt         
+├── weights/    
+│   └── best.pt    
+├── temp/          
+├── .gitignore     
+└── README.md    
+
+
 
 
 
