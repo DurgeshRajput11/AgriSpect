@@ -89,9 +89,7 @@ with st.sidebar:
             "System Trained Model",
             "yolov8n.pt",
             "yolov8s.pt",
-            "yolov8m.pt",
-            "yolov8l.pt",
-            "yolov8x.pt",
+            "yolov8m.pt",,
             "Custom"
         ]
         model_type = st.selectbox("Select Model", model_options, index=0)
