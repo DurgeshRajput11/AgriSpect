@@ -5,71 +5,31 @@ import cv2
 from ultralytics import YOLO
 import streamlit as st
 
+# Custom UI and environment setup
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 os.environ['STREAMLIT_CONFIG_DIR'] = '/tmp/.streamlit'
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics_config'
 os.makedirs(os.environ['STREAMLIT_CONFIG_DIR'], exist_ok=True)
 os.makedirs(os.environ['YOLO_CONFIG_DIR'], exist_ok=True)
 os.environ['STREAMLIT_GATHER_USAGE_STATS'] = "false"
+
+# Custom CSS for dark theme
 custom_css = """
 <style>
-body, .stApp {
-    background: #23243a !important;
-    color: #f4f4f4 !important;
-}
-.stSidebar {
-    background: #2c2f3a !important;
-    color: #f4f4f4 !important;
-    border-radius: 16px;
-    padding: 1.5rem 1rem;
-}
-.stSidebarContent {
-    background: #2c2f3a !important;
-    border-radius: 16px;
-}
-.stExpander {
-    background: #26283a !important;
-    border-radius: 12px;
-    margin-bottom: 1.2rem;
-    border: 1px solid #33354a;
-    box-shadow: 0 2px 8px rgba(44,47,58,0.10);
-}
-.stExpanderHeader {
-    color: #f4f4f4 !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-}
-.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown p, .stMarkdown span, .stMarkdown div {
-    color: #f4f4f4 !important;
-}
-.stSlider > div[data-baseweb="slider"] {
-    background: transparent !important;
-}
-.stSlider .rc-slider-track {
-    background-color: #ff4b4b !important;
-}
-.stSlider .rc-slider-handle {
-    border: solid 2px #ff4b4b !important;
-    background: #fff !important;
-}
-.stSlider .rc-slider-dot-active {
-    border-color: #ff4b4b !important;
-}
-.stRadio label {
-    color: #f4f4f4 !important;
-}
-.stRadio [data-baseweb="radio"] > div[role="radio"]:checked {
-    border-color: #ff4b4b !important;
-    background-color: #ff4b4b !important;
-}
-.stSelectbox, .stSelectbox > div {
-    background: #181926 !important;
-    color: #f4f4f4 !important;
-    border-radius: 8px !important;
-}
-.stSelectbox label {
-    color: #f4f4f4 !important;
-}
+body, .stApp { background: #23243a !important; color: #f4f4f4 !important; }
+.stSidebar { background: #2c2f3a !important; color: #f4f4f4 !important; border-radius: 16px; padding: 1.5rem 1rem; }
+.stSidebarContent { background: #2c2f3a !important; border-radius: 16px; }
+.stExpander { background: #26283a !important; border-radius: 12px; margin-bottom: 1.2rem; border: 1px solid #33354a; box-shadow: 0 2px 8px rgba(44,47,58,0.10); }
+.stExpanderHeader { color: #f4f4f4 !important; font-weight: 700 !important; font-size: 1.1rem !important; }
+.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown p, .stMarkdown span, .stMarkdown div { color: #f4f4f4 !important; }
+.stSlider > div[data-baseweb="slider"] { background: transparent !important; }
+.stSlider .rc-slider-track { background-color: #ff4b4b !important; }
+.stSlider .rc-slider-handle { border: solid 2px #ff4b4b !important; background: #fff !important; }
+.stSlider .rc-slider-dot-active { border-color: #ff4b4b !important; }
+.stRadio label { color: #f4f4f4 !important; }
+.stRadio [data-baseweb="radio"] > div[role="radio"]:checked { border-color: #ff4b4b !important; background-color: #ff4b4b !important; }
+.stSelectbox, .stSelectbox > div { background: #181926 !important; color: #f4f4f4 !important; border-radius: 8px !important; }
+.stSelectbox label { color: #f4f4f4 !important; }
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
@@ -118,7 +78,7 @@ with st.sidebar:
     st.caption("Developed Under IIITDMJ | v1.2.0")
 
 st.title("🌾 AgriVision: AI-Powered Crop Analysis")
-st.markdown("Upload agricultural images, videos, or use your webcam to identify and count fruits using YOLOv8. Fast, accurate, and easy to use!")
+st.markdown("Upload agricultural images, videos, or use your webcam to identify and count fruits or plants using YOLOv8. Fast, accurate, and easy to use!")
 
 upload_container = st.container()
 if input_type == "Image":
@@ -283,4 +243,4 @@ else:
         st.info(" Upload an image or video to begin analysis")
 
 st.markdown("---")
-st.caption("🌐 AI-powered agricultural analysis | Identify Fruits And Counts Them | Also Accepts Users Own Model For Testing")
+st.caption("🌐 AI-powered agricultural analysis | Identify Fruits And Plants And Count Them | Also Accepts Users Own Model For Testing")
