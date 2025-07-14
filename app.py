@@ -4,10 +4,8 @@ import time
 import cv2
 from ultralytics import YOLO
 import streamlit as st
-import torch
-from ultralytics.nn.tasks import DetectionModel
 
-# --- Environment and UI Setup ---
+# Environment setup for compatibility and custom UI
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 os.environ['STREAMLIT_CONFIG_DIR'] = '/tmp/.streamlit'
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics_config'
@@ -15,7 +13,7 @@ os.makedirs(os.environ['STREAMLIT_CONFIG_DIR'], exist_ok=True)
 os.makedirs(os.environ['YOLO_CONFIG_DIR'], exist_ok=True)
 os.environ['STREAMLIT_GATHER_USAGE_STATS'] = "false"
 
-# --- Custom CSS for Dark Theme ---
+# Custom CSS for dark theme
 custom_css = """
 <style>
 body, .stApp { background: #23243a !important; color: #f4f4f4 !important; }
@@ -44,7 +42,6 @@ st.set_page_config(
     menu_items={'About': "AI-Powered Crop Monitoring System"}
 )
 
-# --- Sidebar: Model and Detection Settings ---
 with st.sidebar:
     st.title("⚙️ Model Configuration")
     with st.expander("Model Settings", expanded=True):
@@ -59,9 +56,19 @@ with st.sidebar:
             "Custom"
         ]
         model_type = st.selectbox("Select Model", model_options, index=0)
-        custom_model = None
-        if model_type == "Custom":
+        if model_type == "Fruits Counting Model":
+            model_path = "weights/best.pt"
+        elif model_type == "Plants Counting Model":
+            model_path = "weights/best (2).pt"
+        elif model_type == "Custom":
             custom_model = st.file_uploader("Upload your model", type=["pt"])
+            model_path = "weights/custom.pt" if custom_model else "weights/yolov8s.pt"
+            if custom_model:
+                os.makedirs("weights", exist_ok=True)
+                with open("weights/custom.pt", "wb") as f:
+                    f.write(custom_model.getbuffer())
+        else:
+            model_path = f"weights/{model_type}"
     with st.expander("Detection Parameters", expanded=True):
         confidence = st.slider("Confidence threshold", 0.1, 1.0, 0.4, 0.05)
         iou = st.slider("IoU threshold", 0.1, 1.0, 0.5, 0.05)
@@ -73,7 +80,6 @@ with st.sidebar:
 st.title("🌾 AgriVision: AI-Powered Crop Analysis")
 st.markdown("Upload agricultural images, videos, or use your webcam to identify and count fruits or plants using YOLOv8. Fast, accurate, and easy to use!")
 
-# --- File Upload Section ---
 upload_container = st.container()
 if input_type == "Image":
     uploaded_file = upload_container.file_uploader("📷 Upload agricultural image", type=["jpg", "jpeg", "png"])
@@ -83,47 +89,7 @@ else:
     uploaded_file = upload_container.camera_input("📸 Capture field image")
 
 results_container = st.container()
-model = None
-
-# --- Model Loading Logic (Ultralytics API for all cases) ---
-if model_type == "Fruits Counting Model":
-    model_path = "weights/best.pt"
-elif model_type == "Plants Counting Model":
-    model_path = "weights/best (2).pt"
-elif model_type == "Custom":
-    if custom_model:
-        os.makedirs("weights", exist_ok=True)
-        with open("weights/custom.pt", "wb") as f:
-            f.write(custom_model.getbuffer())
-        # Use safe_globals context to load the model
-        try:
-            with torch.serialization.safe_globals([DetectionModel]):
-                model = torch.load("weights/custom.pt", weights_only=True)
-            st.toast("Custom model loaded using safe_globals.", icon="✅")
-        except Exception as e:
-            st.error(f"Failed to load custom model: {e}")
-            st.stop()
-    else:
-        model_path = "weights/yolov8s.pt"
-        try:
-            model = YOLO(model_path)
-            st.toast(f"Model loaded: {os.path.basename(model_path)}", icon="✅")
-        except Exception as e:
-            st.error(f"Failed to load model: {e}")
-            st.stop()
-
-else:
-    model_path = f"weights/{model_type}"
-
-try:
-    model = YOLO(model_path)
-    st.toast(f"Model loaded: {os.path.basename(model_path)}", icon="✅")
-except Exception as e:
-    st.error(f"Failed to load model: {e}")
-    st.stop()
-
-# --- Main Detection Logic ---
-if uploaded_file is not None and model is not None:
+if uploaded_file is not None:
     os.makedirs("temp", exist_ok=True)
     file_path = os.path.join("temp", uploaded_file.name)
     with open(file_path, "wb") as f:
@@ -139,6 +105,14 @@ if uploaded_file is not None and model is not None:
             st.video(uploaded_file)
         else:
             st.image(uploaded_file, caption="Captured Image", use_container_width=True)
+
+    try:
+        with st.spinner("🚀 Loading detection model..."):
+            model = YOLO(model_path)
+            st.toast(f"Model loaded: {model_path.split('/')[-1]}", icon="✅")
+    except Exception as e:
+        st.error(f"Failed to load model: {e}")
+        st.stop()
 
     with results_container:
         st.subheader("📊 Detection Results")
@@ -187,7 +161,10 @@ if uploaded_file is not None and model is not None:
                             use_container_width=True
                         )
                 else:
-                    st.warning("Detection completed, but the output image was not saved. Please check file permissions.")
+                    if results and results[0].boxes:
+                        st.error("Detection completed, but the output image was not saved. Please check file permissions.")
+                    else:
+                        st.warning("No objects detected in the image. Try lowering the confidence threshold.")
             except Exception as e:
                 st.error(f"Detection failed: {e}")
 
