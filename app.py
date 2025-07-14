@@ -4,6 +4,8 @@ import time
 import cv2
 from ultralytics import YOLO
 import streamlit as st
+import torch
+from ultralytics.nn.tasks import DetectionModel
 
 # --- Environment and UI Setup ---
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -93,9 +95,23 @@ elif model_type == "Custom":
         os.makedirs("weights", exist_ok=True)
         with open("weights/custom.pt", "wb") as f:
             f.write(custom_model.getbuffer())
-        model_path = "weights/custom.pt"
+        # Use safe_globals context to load the model
+        try:
+            with torch.serialization.safe_globals([DetectionModel]):
+                model = torch.load("weights/custom.pt", weights_only=True)
+            st.toast("Custom model loaded using safe_globals.", icon="✅")
+        except Exception as e:
+            st.error(f"Failed to load custom model: {e}")
+            st.stop()
     else:
         model_path = "weights/yolov8s.pt"
+        try:
+            model = YOLO(model_path)
+            st.toast(f"Model loaded: {os.path.basename(model_path)}", icon="✅")
+        except Exception as e:
+            st.error(f"Failed to load model: {e}")
+            st.stop()
+
 else:
     model_path = f"weights/{model_type}"
 

@@ -2,3 +2,5 @@ ultralytics==8.1.0
 numpy==1.26.4
 streamlit
 opencv-python-headless==4.9.0.80
+pillow
+torch>=2.0.0
