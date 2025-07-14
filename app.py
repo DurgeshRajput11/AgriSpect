@@ -86,15 +86,20 @@ with st.sidebar:
     st.title("⚙️ Model Configuration")
     with st.expander("Model Settings", expanded=True):
         model_options = [
-            "System Trained Model",
+            "Fruits Counting Model",
+            "Plants Counting Model",
             "yolov8n.pt",
             "yolov8s.pt",
             "yolov8m.pt",
+            "yolov8l.pt",
+            "yolov8x.pt",
             "Custom"
         ]
         model_type = st.selectbox("Select Model", model_options, index=0)
-        if model_type == "System Trained Model":
+        if model_type == "Fruits Counting Model":
             model_path = "weights/best.pt"
+        elif model_type == "Plants Counting Model":
+            model_path = "weights/best (2).pt"
         elif model_type == "Custom":
             custom_model = st.file_uploader("Upload your model", type=["pt"])
             model_path = "weights/custom.pt" if custom_model else "weights/yolov8s.pt"
