@@ -3,7 +3,7 @@ Live WebApp : https://crop-vision.streamlit.app/
 
 AgriVision is an interactive web app for smart crop and fruit detection using YOLOv8. Upload images, videos, or use your webcam to identify and count fruits and crops with a beautiful, modern UI.
 
-![Live WebCam Results ](https://github.com/user-attachments/assets/1be3f3b0-a91a-4387-a9b9-c53f1cff5ce0)
+![Live WebCam Results ]([https://github.com/user-attachments/assets/1be3f3b0-a91a-4387-a9b9-c53f1cff5ce0](https://huggingface.co/spaces/DurgeshRajput11/AgriVision))
 
 ## 🚀 Features
 
