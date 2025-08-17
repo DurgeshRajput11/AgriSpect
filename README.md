@@ -13,6 +13,7 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 
 
 
+
 ## 🛠️ Installation
 
 1. **Clone the repository:**
