@@ -1,4 +1,4 @@
-# 🌾 AgriVision: AI-Powered Crop Analysis
+# 🌾 AgriSpect: AI-Powered Crop Analysis
 Live WebApp : (https://huggingface.co/spaces/DurgeshRajput11/AgriSpect)
 
 AgriVision is an interactive web app for smart crop and fruit detection using YOLOv8. Upload images, videos, or use your webcam to identify and count fruits and crops with a beautiful, modern UI.
