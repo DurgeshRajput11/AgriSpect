@@ -20,8 +20,8 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 1. **Clone the repository:**
 
     ```
-    git clone https://github.com/your-username/agrivision-app.git
-    cd agrivision-app
+    git clone https://github.com/your-username/agrispect-app.git
+    cd agrispect-app
     ```
 
 2. **Install dependencies:**
@@ -54,7 +54,7 @@ AgriVision is an interactive web app for smart crop and fruit detection using YO
 
 
 
-agrivision-app/   
+agrispect-app/   
 │
 ├── app.py     
 ├── requirements.txt         
