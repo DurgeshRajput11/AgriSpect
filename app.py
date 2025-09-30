@@ -4,8 +4,6 @@ import time
 import cv2
 from ultralytics import YOLO
 import streamlit as st
-
-# Environment setup for compatibility and custom UI
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 os.environ['STREAMLIT_CONFIG_DIR'] = '/tmp/.streamlit'
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics_config'
@@ -13,7 +11,7 @@ os.makedirs(os.environ['STREAMLIT_CONFIG_DIR'], exist_ok=True)
 os.makedirs(os.environ['YOLO_CONFIG_DIR'], exist_ok=True)
 os.environ['STREAMLIT_GATHER_USAGE_STATS'] = "false"
 
-# Custom CSS for dark theme
+
 custom_css = """
 <style>
 body, .stApp { background: #23243a !important; color: #f4f4f4 !important; }
